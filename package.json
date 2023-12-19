@@ -13,13 +13,13 @@
     "packages/*",
     "examples/*"
   ],
-  "homepage": "https://github.com/upsetjs/upsetjs",
+  "homepage": "https://github.com/alevar/upsetjs",
   "bugs": {
-    "url": "https://github.com/upsetjs/upsetjs/issues"
+    "url": "https://github.com/alevar/upsetjs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/upsetjs/upsetjs.git"
+    "url": "https://github.com/alevar/upsetjs.git"
   },
   "scripts": {
     "lint": "yarn run prettier:check && yarn workspaces foreach -v -p --topological-dev run lint",
