@@ -8,6 +8,7 @@
     "declaration": false,
     "noEmit": true,
     "removeComments": false,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
       "@": ["./"],
