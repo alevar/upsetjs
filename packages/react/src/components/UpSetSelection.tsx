@@ -64,18 +64,33 @@ export default function UpSetSelection<T>({
   return (
     <g className={hasHover ? `pnone-${style.id}` : undefined}>
       {(selection || empty) && (
+  Array.isArray(selection)
+    ? selection.map((set, index) => (
         <CombinationSelectionChart
+          key={index}
           data={data}
           size={size}
           style={style}
           transform={`translate(${size.cs.x},${size.cs.y})`}
-          empty={empty && !selection}
-          elemOverlap={selectionOverlap}
-          suffix={`Selection-${style.id}`}
-          tooltip={hasHover ? undefined : selectionName}
+          empty={empty && !set}
+          elemOverlap={generateSelectionOverlap(set, data.overlapGuesser, data.toElemKey)}
+          suffix={`Selection-${style.id}-${index}`}
+          tooltip={hasHover ? undefined : generateSelectionName(set)}
           combinationAddons={size.cs.addons.length === 0 ? EMPTY_ARRAY : size.cs.addons.map(wrapAddon)}
         />
-      )}
+      ))
+    : <CombinationSelectionChart
+        data={data}
+        size={size}
+        style={style}
+        transform={`translate(${size.cs.x},${size.cs.y})`}
+        empty={empty && !selection}
+        elemOverlap={selectionOverlap}
+        suffix={`Selection-${style.id}`}
+        tooltip={hasHover ? undefined : selectionName}
+        combinationAddons={size.cs.addons.length === 0 ? EMPTY_ARRAY : size.cs.addons.map(wrapAddon)}
+      />
+)}
       {(selection || empty) && (
         <SetSelectionChart
           data={data}
